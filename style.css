@@ -1,0 +1,385 @@
+@charset "UTF-8";
+
+/** Uso general */
+*{
+	font-family: "Segoe UI Semilight","Nirmala UI Semilight","Malgun Gothic Semilight",sans-serif;
+}
+body{
+	margin: 0px;
+}
+a{
+	text-decoration: none !important;
+	font-family: "Segoe UI Semilight","Nirmala UI Semilight","Malgun Gothic Semilight",sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: "Sitka Heading",serif;
+}
+.h2-style{
+	margin-bottom: 30px;
+}
+.ul-no-padding{
+	padding: 0px;
+}
+.list-txt-center > li{
+	margin: 10px 0px;
+}
+.my-nav > li, h1, h2, .list-txt-center > li{
+	text-align: center;
+}
+.li-left{
+	text-align: left !important;
+}
+.li-right{
+	text-align: right !important;
+}
+.no-marker-list{
+	list-style-type: none;
+}
+.margin-auto{
+	margin: auto;
+}
+.no-margin-bottom{
+	margin-bottom: 0px;
+}
+.label-style{
+	border-left: 1px solid;
+	border-bottom: 2px solid;
+}
+.content-col{
+	flex: 1 0 0%;
+	padding-top: 15px;
+}
+.text-col{
+	flex: 0 0 auto;
+	width: 66.66666667% !important;
+	margin: auto;
+}
+.std-padding{
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+.container{
+	max-width: 100% !important;
+}
+/** Estilos barra de navegacion */
+.my-nav{
+	--bs-gutter-x: 0 !important;
+}
+.nav-bar{
+	background-color: #000;
+	border-bottom: 2px double #222;
+}
+.nav-li{
+	padding: 10px 0px 15px 0px;
+	font-weight: bold;
+	font-size: 14px;
+	transition: ease 0.3s;
+	color: #F1C878;
+	width: 100%;
+	display: block;
+}
+.nav-li:hover{
+	color: #000;
+	background-color: #F1C878;
+}
+.nav-col{
+	flex: 1 0 0%;
+}
+/** Presentacion y Datos Personales */
+.presentacion{
+	background-color: #EEE;
+}
+.img-perfil{
+	display: block;
+	margin: 79px auto 30px;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	border: 3px solid #FFDE6A;
+	text-align: center;
+	background-image: url("img/person.svg");
+	background-size: 200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 10px;
+}
+.datos-personales{
+	margin: 20px auto;
+	border-radius: 10px;
+	padding: 10px 0px;
+	background-color: #FFF;
+	color: #000;
+	font-weight: bold;
+	font-size: 14px;
+	border: 1px solid #FFA800;
+}
+.personal-label{
+	border-left-color: #FFA800;
+	border-bottom-color: #FFA800;
+}
+/** Domicilio */
+.container-domicilio{
+	background-color: #222;
+	color: #EEE;
+}
+.datos-domicilio{
+	border: 2px solid #0D6EFD;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+.domicilio-label{
+	border-left-color: #0D6EFD;
+	border-bottom-color: #0D6EFD;
+}
+.domicilio-map-section{
+	background-color: #444;
+	background-image: url("img/location.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100px;
+	border-radius: 10px;
+	height: 219px;
+}
+.domicilio-no-map{
+	/*height: 219px;*/
+	display: block;
+	padding-top: 15px;
+	text-align: center;
+	margin: auto;
+}
+.map-button{
+	color: #EEE;
+	border: 2px solid #EEE;
+	border-radius: 10px;
+	background-image: linear-gradient(#777, #444);
+	padding: 10px;
+	display: block;
+	margin: auto;
+}
+.map-button:hover{
+	background-image: linear-gradient(#444, #5A5A5A);
+}
+#map{
+	height: 219px;
+	border-radius: 10px;
+	display: none;
+}
+/** Experiencia */
+.exp-container{
+	background-color: #FAFAFA;
+	color: #000;
+}
+/** Habilidades */
+.hab-container{
+	background-image: linear-gradient(#222, #333, #222);
+	color: #EEE;
+}
+.hab-ul > li{
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #FFA800;
+}
+/** Slideshow */
+#slide-cont{
+	margin-left: 15%;
+}
+.slide{
+	position: relative;
+	display: none;
+	opacity: 40%;
+}
+#actual{
+	opacity: 100%;
+	display: block;
+}
+#side{
+	display: block;
+}
+.slide-img{
+	width: 50px;
+	/*height: 50px;*/
+	display: block;
+	margin: auto;
+}
+.slide-left{
+	display: block;
+	position: relative;
+	animation-fill-mode: both;
+	animation-duration: 1s;
+}
+.left-out{
+	animation-name: animLeftOut;
+}
+.left-move1{
+	animation-name: animLeftLeft;
+}
+.left-move2{
+	animation-name: animLeftCenter;
+}
+.left-in{
+	animation-name: animLeftIn;
+}
+@keyframes animLeftOut{
+	from {left: 0%; opacity: 40%;}
+	to {left: -25%; opacity: 0%;}
+}
+@keyframes animLeftLeft{
+	from {left: 0%; opacity: 100%;}
+	to {left: -25%; opacity: 40%;}
+}
+@keyframes animLeftCenter{
+	from {left: 0%; opacity: 40%;}
+	to {left: -25%; opacity: 100%;}
+}
+@keyframes animLeftIn{
+	from {left: 0%; opacity: 0%;}
+	to {left: -25%; opacity: 40%;}
+}
+
+.zero-in{
+	animation-name: zeroIn;
+}
+.zero-center{
+	animation-name: zeroCenter;
+}
+.zero-left{
+	animation-name: zeroLeft;
+}
+.one-in{
+	animation-name: oneIn;
+}
+.one-center{
+	animation-name: oneCenter;
+}
+.two-in{
+	animation-name: twoIn;
+}
+
+.zero-out{
+	animation-name: zeroOut;
+}
+.one-left{
+	animation-name: oneLeft;
+}
+.two-center{
+	animation-name: twoCenter;
+}
+.one-out{
+	animation-name: oneOut;
+}
+.two-left{
+	animation-name: twoLeft;
+}
+.two-out{
+	animation-name: twoOut;
+}
+
+@keyframes zeroIn{
+	from {left : 75%; opacity: 0%;}
+	to {left: 50%; opacity: 40%;}
+}
+@keyframes zeroCenter{
+	from {left: 50%; opacity: 40%;}
+	to {left: 25%; opacity: 100%;}
+}
+@keyframes zeroLeft{
+	from {left: 25%; opacity: 100%;}
+	to {left: 0%; opacity: 40%;}
+}
+@keyframes oneIn{
+	from {left: 50%; opacity: 0%;}
+	to {left: 25%; opacity: 40%;}
+}
+@keyframes oneCenter{
+	from {left: 25%; opacity: 40%;}
+	to {left: 0%; opacity: 100%;}
+}
+@keyframes twoIn{
+	from {left: 25%; opacity: 0%;}
+	to {left: 0%; opacity: 40%;}
+}
+
+@keyframes zeroOut{
+	from {left: -25%; opacity: 40%;}
+	to {left: -50%; opacity: 0%;}
+}
+@keyframes oneLeft{
+	from {left: -25%; opacity: 100%;}
+	to {left: -50%; opacity: 40%;}
+}
+@keyframes twoCenter{
+	from {left: -25%; opacity: 40%;}
+	to {left: -50%; opacity: 100%;}
+}
+@keyframes oneOut{
+	from {left: -50%; opacity: 40%;}
+	to {left: -75%; opacity: 0%;}
+}
+@keyframes twoLeft{
+	from {left: -50%; opacity: 100%;}
+	to {left: -75%; opacity: 40%;}
+}
+@keyframes twoOut{
+	from {left: -75%; opacity: 40%;}
+	to {left: -100%; opacity: 0%;}
+}
+
+/** Acerca de mí */
+.acerca-container{
+	background-image: linear-gradient(#FFF, #EEE);
+	color: #000;
+}
+/** Contacto */
+.cont-container{
+	background-color: #000;
+	color: #F1C878;
+	padding-bottom: 20px;
+	max-width: 100% !important;
+}
+.footer-col{
+	flex: 0 0 auto;
+	width: 66.66666667% !important;
+	margin: auto;
+}
+.cont-col{
+	flex: 0 0 auto;
+	width: 16.66666667% !important;
+}
+.footer-logo{
+	flex: 0 0 auto;
+	text-align: center;
+	width: 16.66666667% !important;
+}
+
+/** Media queries */
+/* Para navegacion */
+@media screen and (max-width: 655px){
+	.nav-col{
+		flex: 0 0 auto;
+		width: 100%;
+	}
+}
+/* Para el resto de la pagina */
+@media screen and (max-width: 767px){
+	.content-col{
+		flex: 0 0 auto;
+		width: 100%;
+	}
+	.img-perfil{
+		margin: 30px auto !important;
+	}
+	.text-col{
+	    width: 83.33333333% !important;
+	}
+	.footer-col{
+		width: 100% !important;
+	}
+	.cont-col{
+		width: 25% !important;
+	}
+	.footer-logo{
+		flex: 1 0 0% !important;
+	}
+}

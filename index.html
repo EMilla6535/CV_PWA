@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mi CV</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="css/bootstrap-grid.css" type="text/css" rel="stylesheet">
+	<link href="css/bootstrap-utilities.css" type="text/css" rel="stylesheet">
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="js/leaflet/leaflet.css"/>
+	<script type="text/javascript" src="js/leaflet/leaflet.js"></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="manifest" href="manifest.json">
+	<link rel="text/javascript" src="sw/sw.js">
+</head>
+<body>
+	<header>
+		<!-- Barra de navegacion a otras partes de la pagina -->
+		<nav class="nav-bar">
+			<ul class="row my-nav no-marker-list ul-no-padding no-margin-bottom">
+				<li class="nav-col"><a class="nav-li" href="#datos">Datos</a></li>
+				<li class="nav-col"><a class="nav-li" href="#domicilio">Domicilio</a></li>
+				<li class="nav-col"><a class="nav-li" href="#experiencia">Experiencia</a></li>
+				<li class="nav-col"><a class="nav-li" href="#habilidades">Habilidades</a></li>
+				<li class="nav-col"><a class="nav-li" href="#acerca-de-mi">Acerca de mi</a></li>
+				<li class="nav-col"><a class="nav-li" href="#contacto">Contacto</a></li>
+			</ul>
+		</nav>
+		<!-- Presentacion de informacion importante -->
+		<div class="container presentacion std-padding">
+			<h1 class="h1">Curriculum Vitae</h1>
+			<div class="row" id="datos">
+				<div class="content-col" id="perfil">
+					<img id="img-perfil" class="img-perfil" alt="Imagen de Perfil" src="1.jpg">
+				</div>
+				<div class="content-col">
+					<!-- <h2>Datos Personales</h2>  -->
+					<section class="datos-personales">
+						<ul class="row no-marker-list">
+							<li class="col"><h2>Datos Personales</h2></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Nombre</li>
+							<li class="col-2">:</li>
+							<li class="col" id="nombre"></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Apellido</li>
+							<li class="col-2">:</li>
+							<li class="col" id="apellido"></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Fecha de Nacimiento</li>
+							<li class="col-2">:</li>
+							<li class="col" id="fecha_nacimiento"></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Edad</li>
+							<li class="col-2">:</li>
+							<li class="col" id="edad"></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Sexo</li>
+							<li class="col-2">:</li>
+							<li class="col" id="sexo"></li>
+						</ul>
+						<ul class="row no-marker-list">
+							<li class="col label-style personal-label">Nacionalidad</li>
+							<li class="col-2">:</li>
+							<li class="col" id="nacionalidad"></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<section class="container container-domicilio std-padding">
+		<!-- Domicilio -->
+		<h2 class="h2-style" id="domicilio">Domicilio</h2>
+		<div class="row">
+			<div class="content-col">
+				<section class="datos-domicilio">
+					<ul class="row no-marker-list">
+						<li class="col label-style domicilio-label">Calle</li>
+						<li class="col-1">:</li>
+						<li class="col" id="calle"></li>
+					</ul>
+					<ul class="row no-marker-list">
+						<li class="col label-style domicilio-label">Ciudad</li>
+						<li class="col-1">:</li>
+						<li class="col" id="ciudad"></li>
+					</ul>
+					<ul class="row no-marker-list">
+						<li class="col label-style domicilio-label">Estado</li>
+						<li class="col-1">:</li>
+						<li class="col" id="estado"></li>
+					</ul>
+					<ul class="row no-marker-list">
+						<li class="col label-style domicilio-label">Pais</li>
+						<li class="col-1">:</li>
+						<li class="col" id="pais"></li>
+					</ul>
+					<ul class="row no-marker-list">
+						<li class="col label-style domicilio-label">Codigo Postal</li>
+						<li class="col-1">:</li>
+						<li class="col" id="cp"></li>
+					</ul>
+				</section>
+			</div>
+			<div class="content-col">
+				<section class="domicilio-map-section">
+					<button id="boton-mapa" class="map-button">Click aquí para ver un mapa con la localización del domicilio.</button>
+					<!-- Mapa si es posible -->
+					<div id="map" style="display: none;"></div>
+				</section>
+			</div>
+		</div>
+	</section>
+	
+	<section class="container exp-container std-padding">
+		<!-- Experiencia -->
+		<h2 class="h2-style" id="experiencia">Experiencia</h2>
+		<div class="row">
+			<section class="text-col">
+				<ol>
+					<li>2013 - 2015 : Freelancer Programador Front-end.</li>
+					<li>2015 - 2017 : Programador Junior Front-end.</li>
+					<li>2017 - 2019 : Programador Senior Front-end / Back-end.</li>
+					<li>2019 - 2021 : Programador de Blockchain.</li>
+					<li>2021 - Actualidad : Desarrollador de IA.</li>
+				</ol>
+			</section>
+		</div>
+		
+	</section>
+
+	<section class="container hab-container std-padding">
+		<!-- Habilidades -->
+		<h2 class="h2-style" id="habilidades">Habilidades</h2>
+		<div class="row">
+			<ul class="text-col no-marker-list hab-ul">
+				<li>Nivel A1 de idioma inglés.</li>
+				<li>Manejo de Blockchain e IA.</li>
+				<li>Conocimientos de varios idiomas de programación, entre ellos C, C++, JavaScript, PHP y Python.</li>
+				<li>Además de HTML5 y CSS3. </li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="text-col">
+				<div class="row" id="slide-cont">
+					<div class="slide col-3" id="side">
+						<img alt="C" src="img/C-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3" id="actual">
+						<img alt="C++" src="img/C++-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3" id="side">
+						<img alt="CSS3" src="img/CSS3-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3">
+						<img alt="HTML5" src="img/HTML5-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3">
+						<img alt="JavaScript" src="img/JS-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3">
+						<img alt="PHP" src="img/PHP-Alt.svg" class="slide-img">
+					</div>
+					<div class="slide col-3">
+						<img alt="Python" src="img/Python-Alt.svg" class="slide-img">
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript" src="js/slideshow.js"></script>
+		</div>
+	</section>
+	<section class="container acerca-container std-padding">
+		<!-- Acerca de mi -->
+		<h2 class="h2-style" id="acerca-de-mi">Acerca de mí</h2>
+		<div class="row">
+			<section class="text-col">
+				<p>Aprendí a programar hace diez años y desde entonces me enamoré de esta actividad. Me gusta aprender acerca de nuevas tecnologias y el potencial que tienen para 
+				generar un impacto positivo en nuestro entorno. Mi objetivo es utilizar los conocimientos que adquirí para hacer más fácil y accesible la vida diaria de las personas.
+				Tengo cualidades para trabajar en equipo y cumplir a tiempo las metas de los proyectos que realizo. Por último quisiera comunicarle que soy un profesional serio, metódico, 
+				con grandes aspiraciones que puede hacer que su empresa llegue a nuevas alturas enfrentado desafíos más complejos y rentables.</p>
+			</section>
+		</div>
+	</section>
+	<footer class="container cont-container std-padding">
+		<!-- Informacion de contacto -->
+		<h2 class="h2-style" id="contacto">Información de contacto</h2>
+		<div class="row">
+			<div class="footer-col">
+				<ul class="row no-marker-list">
+					<li class="cont-col label-style">Email</li>
+					<li class="col" id="email"></li>
+				</ul>
+				<ul class="row no-marker-list">
+					<li class="cont-col label-style">Teléfono</li>
+					<li class="col" id="telefono"></li>
+				</ul>
+				<ul class="row no-marker-list">
+					<li class="cont-col label-style">Celular</li>
+					<li class="col" id="celular"></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="js/data.js"></script>
+</body>
+</html>
