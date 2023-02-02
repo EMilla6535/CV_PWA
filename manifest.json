@@ -14,14 +14,14 @@
   "display_override": ["window-controls-overlay"],
   "icons": [
     {
-      "src": "android-chrome-512x512",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "http://localhost/CV_PWA/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     },
     {
-      "src": "android-chrome-192x192",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "http://localhost/CV_PWA/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ],
   "features": [

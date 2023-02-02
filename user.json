@@ -1,0 +1,31 @@
+{"results":[{
+	"gender":"male",
+	"name":{
+		"title":"Mr",
+		"first":"Kyle",
+		"last":"Bowman"},
+	"location":{
+		"street":{
+			"number":733,
+			"name":"Timber Wolf Trail"},
+		"city":"Coffs Harbour",
+		"state":"Queensland",
+		"country":"Australia",
+		"postcode":2089,
+		"coordinates":{
+			"latitude":"-85.9637",
+			"longitude":"32.7085"},
+		"timezone":{
+			"offset":"+2:00",
+			"description":"Kaliningrad, South Africa"}},
+	"email":"kyle.bowman@example.com",
+	"dob":{
+		"date":"2000-09-15T19:19:40.054Z",
+		"age":22},
+	"phone":"06-0773-2679",
+	"cell":"0459-792-034",
+	"picture":{
+		"large":"https://randomuser.me/api/portraits/men/1.jpg",
+		"medium":"https://randomuser.me/api/portraits/med/men/1.jpg",
+		"thumbnail":"https://randomuser.me/api/portraits/thumb/men/1.jpg"},
+	"nat":"AU"}]}
