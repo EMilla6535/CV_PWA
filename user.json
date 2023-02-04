@@ -13,8 +13,8 @@
 		"country":"Australia",
 		"postcode":2089,
 		"coordinates":{
-			"latitude":"-85.9637",
-			"longitude":"32.7085"},
+			"latitude":"-30.296453",
+			"longitude":"153.114022"},
 		"timezone":{
 			"offset":"+2:00",
 			"description":"Kaliningrad, South Africa"}},
@@ -25,7 +25,7 @@
 	"phone":"06-0773-2679",
 	"cell":"0459-792-034",
 	"picture":{
-		"large":"https://randomuser.me/api/portraits/men/1.jpg",
-		"medium":"https://randomuser.me/api/portraits/med/men/1.jpg",
-		"thumbnail":"https://randomuser.me/api/portraits/thumb/men/1.jpg"},
+		"large":"img/1.jpg",
+		"medium":"img/1-med.jpg",
+		"thumbnail":"img/1-thumbnail.jpg"},
 	"nat":"AU"}]}

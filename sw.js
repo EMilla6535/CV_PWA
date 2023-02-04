@@ -14,6 +14,7 @@ self.addEventListener("install", (event) => {
             "index.html",
             "style.css",
             "js/sw-opener.js",
+            "user.json",
             "android-chrome-192x192.png",
             "android-chrome-512x512.png",
             "img/person.svg",
@@ -34,13 +35,28 @@ const putInCache = async (request, response) => {
     await cache.put(request, response);
 };
 
-const cacheFirst = async ({ request, preloadResponsePromise, fallbackUrl }) => {
+const networkFirst = async ({request, fallbackUrl}) => {
+    try {
+        const responseFromNetwork = await fetch(request);
+        return responseFromNetwork;
+    } catch (error) {
+        const responseFromCache = await caches.match(fallbackUrl);
+        if(responseFromCache){
+            return responseFromCache;
+        }
+        return new Response("Data Error", {
+            status: 408,
+            headers: {"Content-Type": "text/plain"},
+        });
+    }   
+};
+
+const cacheFirst = async ({ request, fallbackUrl }) => {
     const responseFromCache = await caches.match(request);
     if(responseFromCache)
     {
         return responseFromCache;
     }
-
     try {
         const responseFromNetwork = await fetch(request);
         putInCache(request, responseFromNetwork.clone());
@@ -60,9 +76,9 @@ const cacheFirst = async ({ request, preloadResponsePromise, fallbackUrl }) => {
 
 self.addEventListener("fetch", (event) => {
     event.respondWith(
-        cacheFirst({
+        networkFirst({
             request: event.request,
-            fallbackUrl: "img/person.svg",
+            fallbackUrl: "user.json",
         })
     );
 });

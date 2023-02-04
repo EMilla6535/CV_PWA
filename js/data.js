@@ -1,35 +1,15 @@
-/* Datos por defecto si no hay Internet */
-let default_user_data = {"results":[{
-	"gender":"male",
-	"name":{
-		"title":"Mr",
-		"first":"Kyle",
-		"last":"Bowman"},
-	"location":{
-		"street":{
-			"number":733,
-			"name":"Timber Wolf Trail"},
-		"city":"Coffs Harbour",
-		"state":"Queensland",
-		"country":"Australia",
-		"postcode":2089,
-		"coordinates":{
-			"latitude":"-30.296453",
-			"longitude":"153.114022"},
-		"timezone":{
-			"offset":"+2:00",
-			"description":"Kaliningrad, South Africa"}},
-	"email":"kyle.bowman@example.com",
-	"dob":{
-		"date":"2000-09-15T19:19:40.054Z",
-		"age":22},
-	"phone":"06-0773-2679",
-	"cell":"0459-792-034",
-	"picture":{
-		"large":"img/1.jpg",
-		"medium":"img/1-med.jpg",
-		"thumbnail":"img/1-thumbnail.jpg"},
-	"nat":"AU"}]};
+/** Registra el service worker */
+if('serviceWorker' in navigator)
+{
+	try {
+		navigator.serviceWorker.register('sw.js');
+	} catch (error) {
+		console.log(`Service worker registration failed: ${error}`);
+	}
+} else{
+    console.error('Service workers are not supported');
+}
+
 /* Traduce Nacionalidad */
 function getNationality(nat){
 	if(nat == "AU" || nat == "au"){
@@ -90,6 +70,7 @@ function getDate(date){
 	buffer = getDay(date) + "/" + getMonth(date) + "/" + getYear(date);
 	return buffer;
 }
+
 /* Establece los datos de usuario en los diferentes campos */
 function setUserData(user_data){
 	document.getElementById('nombre').innerHTML = user_data.results[0].name.first;
@@ -146,8 +127,25 @@ function setUserData(user_data){
 	document.getElementById('celular').innerHTML = user_data.results[0].cell;
 }
 
+/** Nueva forma de obtener los datos a traves de service workers */
+try {
+	const dataResponse = await fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es");
+	if(!dataResponse.ok)
+	{
+		throw new Error(
+			`Error al cargar los datos; codigo: ${
+				dataResponse.statusText || dataResponse.status
+			}`
+		);
+	}
+	setUserData(dataResponse.json());
+} catch (error) {
+	console.error(error);
+	/* Añadir un elemento en la pagina principal para indicar que los datos no se cargaron correctamente */
+}
+
 /* Trata de obtener los datos de usuario */
-fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es")
+/*fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es")
   .then(function (response) {
     return response.json();
   })
@@ -157,7 +155,7 @@ fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gen
   .catch(function(error) {
 	  setUserData(default_user_data);
   })
-
+*/
 /* Al hacer click en un boton mostrar un mapa */
 function abrirMapa(){
 	  document.getElementById("boton-mapa").style.display = "none";
