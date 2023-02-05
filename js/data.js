@@ -128,21 +128,30 @@ function setUserData(user_data){
 }
 
 /** Nueva forma de obtener los datos a traves de service workers */
-try {
-	const dataResponse = await fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es");
+const getUserData = async (url) => {
+	const dataResponse = await fetch(url);
 	if(!dataResponse.ok)
 	{
 		throw new Error(
 			`Error al cargar los datos; codigo: ${
-				dataResponse.statusText || dataResponse.status
+			dataResponse.statusText || dataResponse.status
 			}`
 		);
 	}
-	setUserData(dataResponse.json());
-} catch (error) {
-	console.error(error);
-	/* Añadir un elemento en la pagina principal para indicar que los datos no se cargaron correctamente */
-}
+	const result = await (dataResponse.json().then((data) => { return data; }));
+	return result;
+};
+
+const resolveUserData = async () => {
+	try {
+		const user_data = await getUserData("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es");
+		setUserData(user_data);
+	} catch (error) {
+		console.error(error);
+	}
+	
+};
+resolveUserData();
 
 /* Trata de obtener los datos de usuario */
 /*fetch("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es")

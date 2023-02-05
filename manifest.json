@@ -24,6 +24,18 @@
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
+    },
+    {
+      "src": "https://emilla6535.github.io/CV_PWA/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "https://emilla6535.github.io/CV_PWA/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
     }
   ],
   "features": [
@@ -36,5 +48,6 @@
     "business",
     "productivity"
   ],
-  "lang": "es"
+  "lang": "es",
+  "dir": ""
 }

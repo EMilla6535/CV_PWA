@@ -40,7 +40,7 @@ const networkFirst = async ({request, fallbackUrl}) => {
         const responseFromNetwork = await fetch(request);
         return responseFromNetwork;
     } catch (error) {
-        const responseFromCache = await caches.match(fallbackUrl);
+        const responseFromCache = await fetch(fallbackUrl);
         if(responseFromCache){
             return responseFromCache;
         }
@@ -78,7 +78,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         networkFirst({
             request: event.request,
-            fallbackUrl: "user.json",
+            fallbackUrl: "./user.json",
         })
     );
 });
