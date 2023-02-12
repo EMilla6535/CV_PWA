@@ -2,7 +2,7 @@
 if('serviceWorker' in navigator)
 {
 	try {
-		navigator.serviceWorker.register('sw.js');
+		navigator.serviceWorker.register('sw.js', { scope: './' });
 	} catch (error) {
 		console.log(`Service worker registration failed: ${error}`);
 	}
@@ -147,6 +147,7 @@ const resolveUserData = async () => {
 		const user_data = await getUserData("https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es");
 		setUserData(user_data);
 	} catch (error) {
+		/** Crear un elemento especifico para informar que los datos no se pudieron cargar */
 		console.error(error);
 	}
 	

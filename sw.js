@@ -75,10 +75,39 @@ const cacheFirst = async ({ request, fallbackUrl }) => {
 };
 
 self.addEventListener("fetch", (event) => {
-    event.respondWith(
+
+    if(event.request.method !== "POST")
+    {
+        event.respondWith(
+        networkFirst({
+            request: event.request,
+            fallbackUrl: "./user.json",
+            })
+        );
+        return;
+    }
+
+    event.respondWith(async () => {
+        const form_data = await event.request.formData();
+        const reader = new FileReader();
+        reader.readAsText(form_data.get("users"));/** <----- Modificar users si no es la etiqueta */
+        const link = form_data.get("link") || "";
+        reader.onload = () => {
+            /** Colocar los datos en cache */
+            putInCache("share_user", reader.result);
+        }
+        cacheFirst({request: "share_user", fallbackUrl: "user.json"});
+        //return Response.redirect("index.html", 303);
+    });
+
+    /*event.respondWith(
         networkFirst({
             request: event.request,
             fallbackUrl: "./user.json",
         })
-    );
+    );*/
+});
+self.addEventListener("activate", (event) => {
+    /** Remove old cache */
+    clients.claim();
 });

@@ -1,9 +1,9 @@
 {
-  "id": "/",
-  "scope": "/",
+  "id": "./",
+  "scope": "./",
   "name": "CV PWA",
   "display": "standalone",
-  "start_url": "/",
+  "start_url": "./index.html",
   "short_name": "CV PWA",
   "theme_color": "#EEE",
   "description": "Conversion de la página para CV en una PWA",
@@ -49,5 +49,43 @@
     "productivity"
   ],
   "lang": "es",
-  "dir": ""
+  "dir": "auto",
+  "shortcuts": [
+    {
+      "name": "Domicilio",
+      "url": "index.html#domicilio",
+      "description": "Muestra directamente la informacion relacionada al domicilio.",
+      "icons": [
+        {
+          "type": "image/svg",
+          "src": "https://emilla6535.github.io/CV_PWA/location-96x96.svg",
+          "purpose": "any",
+          "sizes": "96x96"
+        },
+        {
+          "type": "image/svg",
+          "src": "http://localhost/CV_PWA/location-96x96.svg",
+          "purpose": "any",
+          "sizes": "96x96"
+        }
+      ]
+    } 
+  ],
+  "share_target": {
+    "action": "index.html",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "users",
+          "accept": ["application/json",".json"]
+        }
+      ]
+    }
+  }
+
 }
