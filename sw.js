@@ -171,3 +171,9 @@ self.addEventListener('sync', (event) => {
     }
 });
 
+self.addEventListener('periodicsync', (event) => {
+    if(event.tag === 'per-sync-check')
+    {
+        console.log("From periodic sync");
+    }
+});
