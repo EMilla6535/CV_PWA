@@ -29,7 +29,7 @@ async function periodicSyncOnConnection(){
 
     try {
         await registration.periodicSync.register("per-sync-check", {
-            minInterval: 60 * 1000 * 5,
+            minInterval: 60 * 1000,
         });
         console.log("Periodic Sync Reg success!");
     } catch (error) {
