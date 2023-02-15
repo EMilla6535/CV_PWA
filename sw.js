@@ -1,3 +1,25 @@
+const version = "v1:";
+const sw_caches = {
+    assets: {
+        name: `${version}assets`
+    },
+    images: {
+        name: `${version}images`
+    },
+    pages: {
+        name: `${version}pages`
+    }
+};
+const offline_page = "offline.html";
+const preinstall = [
+    offline_page,
+    "index.html",
+    "sw.js",
+    "style.css",
+    "user.json",
+    "favicon.ico"
+];
+
 const addToCache = async (resources) => {
     const cache = await caches.open("v1");
     try {
@@ -29,6 +51,15 @@ self.addEventListener("install", (event) => {
         ])
     );
 });
+/* Instalacion alternativa
+self.addEventListener("install", function(event) {
+    event.waitUntil(
+        caches.open(sw_caches.assets.name)
+        .then(function(cache){
+            return cache.addAll(preinstall);
+        })
+    );
+});*/
 
 const putInCache = async (request, response) => {
     const cache = await caches.open("v1");
@@ -109,5 +140,32 @@ self.addEventListener("fetch", (event) => {
 });
 self.addEventListener("activate", (event) => {
     /** Remove old cache */
+    /*event.waitUntil(
+        caches.keys()
+            .then((keys) => {
+                return Promise.all(
+                    keys.filter((key) => {
+                        return ! key.startsWith(version);
+                    })
+                    .map((key) => {
+                        return caches.delete(key);
+                    })
+                );
+            })
+            .then(() => {
+                clients.claim();
+            })
+    );*/
     clients.claim();
+});
+self.addEventListener('sync', (event) => {
+    if(event.tag === 'sync-post'){
+        event.waitUntil(() => {
+            networkFirst({
+                request: "https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es",
+                fallbackUrl: "./URLSearchParams.json"
+            })
+        }
+        );
+    }
 });
