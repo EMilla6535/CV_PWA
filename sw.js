@@ -159,13 +159,15 @@ self.addEventListener("activate", (event) => {
     clients.claim();
 });
 self.addEventListener('sync', (event) => {
-    if(event.tag === 'sync-post'){
+    if(event.tag === "sync-post")
+    {
+        console.log("From Sync");
         event.waitUntil(() => {
-            networkFirst({
-                request: "https://randomuser.me/api/?exc=login,registered,id&noinfo&format=json&gender=male&nat=au,mx,es",
-                fallbackUrl: "./URLSearchParams.json"
+            new Response("From sw sync",{
+                status: 200,
+                headers: {"Content-Type": "text/plain"}
             })
-        }
-        );
+        });
     }
 });
+
