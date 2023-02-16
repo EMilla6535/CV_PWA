@@ -170,10 +170,15 @@ self.addEventListener('sync', (event) => {
         });
     }
 });
-
+let n_badge = 0;
 self.addEventListener('periodicsync', (event) => {
     if(event.tag === 'per-sync-check')
     {
         console.log("From periodic sync");
+        if('setAppBadge' in navigator){
+            navigator.setAppBadge(++n_badge).catch((error) => {
+                console.error(error);
+            });
+        }
     }
 });
