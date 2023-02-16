@@ -198,6 +198,9 @@ self.addEventListener('push', (event) => {
         });
         event.waitUntil(showNotification);
     }
+    else {
+        console.log("Permission not granted");
+    }
 });
 
 self.addEventListener('notificationclick', (event) => {
