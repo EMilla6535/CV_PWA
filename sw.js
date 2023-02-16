@@ -50,6 +50,7 @@ self.addEventListener("install", (event) => {
             "img/Python-Alt.svg"
         ])
     );
+    self.skipWaiting();
 });
 /* Instalacion alternativa
 self.addEventListener("install", function(event) {
@@ -181,4 +182,39 @@ self.addEventListener('periodicsync', (event) => {
             });
         }
     }
+});
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'CLEAR_BADGE') {
+        n_badge = 0;
+    }
+});
+
+self.addEventListener('push', (event) => {
+    if (Notification.permission === "granted") {
+        const notification_text = event.data.text;
+        const showNotification = self.registration.showNotification('Sample Message',{
+            body: notification_text,
+            icon: "favicon-32x32.png"
+        });
+        event.waitUntil(showNotification);
+    }
+});
+
+self.addEventListener('notificationclick', (event) => {
+    console.log("On notification click: ", event.notification.tag);
+    event.notification.close();
+
+    event.waitUntil(clients.matchAll({type: 'window'})).then((client_list) => {
+        for (let i = 0; i < client_list.length; i++) {
+            const client = client_list[i];
+            if ((client.url == "http://localhost/CV_PWA/index.html" || 
+                client.url == "https://emilla6535.github.io/CV_PWA/") &&
+                'focus' in client) {
+                return client.focus();
+            }
+        }
+        if (clients.openWindow) {
+            return clients.openWindow('/');
+        }
+    });
 });
